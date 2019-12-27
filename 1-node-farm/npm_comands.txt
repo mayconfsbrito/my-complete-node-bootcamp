@@ -1,0 +1,10 @@
+#Example of instaling old version of Slugify
+$ npm install slugify@1.0.0
+
+#Check outdated packages
+$ npm outdated
+
+#packages.json
+#Accept upgrade for all versions (major, minor and patch), including braking changes -> "slugify": "*1.0.0"
+#Accept upgrade in minor version -> "slugify": "^1.0.0"
+#Accept upgrade just in patch verstion -> "slugify": "~1.0.0"
