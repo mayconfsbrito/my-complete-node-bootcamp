@@ -4,7 +4,21 @@ $ npm install slugify@1.0.0
 #Check outdated packages
 $ npm outdated
 
+#Install express
+$ npm i express
+
 #packages.json
-#Accept upgrade for all versions (major, minor and patch), including braking changes -> "slugify": "*1.0.0"
+#Accept upgrade for all versions (major, minor and patch), including braking changes -> "slugify": "*1.0.0"'
 #Accept upgrade in minor version -> "slugify": "^1.0.0"
 #Accept upgrade just in patch verstion -> "slugify": "~1.0.0"
+
+----------------------------------------------------------------------------------------------VS CODE----------------------------------------------------------------------------------------------
+Useful extensions:
+DotENV
+ESLint
+Image preview
+Prettier - Code Formatter
+Pug beautify
+TabNine
+TODO Highlight
+Theme - Oceanic Next
