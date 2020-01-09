@@ -7,10 +7,11 @@ $ npm outdated
 #Install express
 $ npm i express
 
-#packages.json
+----------------------------------------------------------------------------------------------packages.json----------------------------------------------------------------------------------------------
 #Accept upgrade for all versions (major, minor and patch), including braking changes -> "slugify": "*1.0.0"'
 #Accept upgrade in minor version -> "slugify": "^1.0.0"
 #Accept upgrade just in patch verstion -> "slugify": "~1.0.0"
+nodemon -> auto-reload extension to nodejs
 
 ----------------------------------------------------------------------------------------------VS CODE----------------------------------------------------------------------------------------------
 Useful extensions:
