@@ -18,6 +18,29 @@ app.get('/api/v1/tours', (req, res) => {
   });
 });
 
+app.get('/api/v1/tours/:id', (req, res) => {
+  console.log(req.params);
+
+  // In javascript, when we multiply a string that looks like a number, it will convert that string to a number
+  const id = req.params.id * 1;
+
+  //Search in the tours array by the element that have the same id as the id parameter
+  const tour = tours.find(el => el.id === id);
+
+  if (!tour)
+    return res.status(404).json({
+      status: 'fail',
+      message: 'Invalid ID'
+    });
+
+  res.status(200).json({
+    status: 'success',
+    data: {
+      tours: tour
+    }
+  });
+});
+
 app.post('/api/v1/tours', (req, res) => {
   //console.log(req.body);
 
