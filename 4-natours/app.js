@@ -73,6 +73,25 @@ app.patch('/api/v1/tours/:id', (req, res) => {
   });
 });
 
+app.delete('/api/v1/tours/:id', (req, res) => {
+  // In javascript, when we multiply a string that looks like a number, it will convert that string to a number
+  const id = req.params.id * 1;
+
+  //Search in the tours array by the element that have the same id as the id parameter
+  const tour = tours.find(el => el.id === id);
+
+  if (!tour)
+    return res.status(404).json({
+      status: 'fail',
+      message: 'Invalid ID'
+    });
+
+  return res.status(204).json({
+    status: 'success',
+    data: null
+  });
+});
+
 const port = 3000;
 app.listen(port, () => {
   console.log(`App runing on port ${port}...`);
