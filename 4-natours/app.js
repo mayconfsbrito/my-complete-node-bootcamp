@@ -7,6 +7,14 @@ const filePathTours = `${__dirname}/dev-data/data/tours-simple.json`;
 // Middleware to help to read the request object on the post requests
 app.use(express.json());
 
+// Middleware for testing a middleware with an anonymous function
+app.use((req, res, next) => {
+  console.log('Hello from the middleware!');
+
+  //Calls the function to pass to the next middleware
+  next();
+});
+
 const tours = JSON.parse(fs.readFileSync(filePathTours));
 
 const getAllTours = (req, res) => {
