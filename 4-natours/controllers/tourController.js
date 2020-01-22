@@ -2,6 +2,18 @@ const fs = require('fs');
 const filePathTours = `${__dirname}/../dev-data/data/tours-simple.json`;
 const tours = JSON.parse(fs.readFileSync(filePathTours));
 
+/**
+ * Middleware of param route to check the value of an id parameter
+ */
+exports.checkID = (req, res, next, val) => {
+  if (req.params.id * 1 > tours.length)
+    return res.status(404).json({
+      status: 'fail',
+      message: 'Invalid ID'
+    });
+  next();
+};
+
 exports.getAllTours = (req, res) => {
   res.status(200).json({
     status: 'success',
@@ -20,12 +32,6 @@ exports.getTour = (req, res) => {
 
   //Search in the tours array by the element that have the same id as the id parameter
   const tour = tours.find(el => el.id === id);
-
-  if (!tour)
-    return res.status(404).json({
-      status: 'fail',
-      message: 'Invalid ID'
-    });
 
   res.status(200).json({
     status: 'success',
@@ -51,12 +57,6 @@ exports.createTour = (req, res) => {
 };
 
 exports.updateTour = (req, res) => {
-  if (req.params.id * 1 > tours.length)
-    return res.status(404).json({
-      status: 'fail',
-      message: 'Invalid ID'
-    });
-
   res.status(200).json({
     status: 'success',
     data: {
