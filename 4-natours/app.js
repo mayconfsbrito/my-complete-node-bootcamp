@@ -11,6 +11,7 @@ const app = express();
  */
 app.use(morgan('dev')); // Logging middleware for requests
 app.use(express.json()); // Middleware to help to read the request object on the post requests
+app.use(express.static(`${__dirname}/public`)); // Allow to request for static files in public folder
 
 // Middleware for testing a middleware with an anonymous function
 app.use((req, res, next) => {
