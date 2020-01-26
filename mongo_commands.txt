@@ -1,0 +1,26 @@
+# Commands to use in the mongo shell (mongo.exe)
+
+# Switch or create and switch to this database
+use DATABASE
+
+# Show all databases in this mongo instance
+show dbs
+
+# Insert one object in this document (create the collection if doesn't exists)
+db.DOCUMENT.insertOne({})
+
+# Insert many objects in this document
+db.DOCUMENT.insertMany({})
+
+# Exit shell
+quit()
+
+--------------------------------------------------------------------------------------------
+Installation
+# Mongo databases location (create this directory in the installation)
+C:\data\db
+
+# Add the bin folder to the PATH environment variable
+C:\Program Files\MongoDB\Server\4.2\bin
+
+
