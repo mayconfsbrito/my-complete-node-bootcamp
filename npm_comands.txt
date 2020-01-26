@@ -10,11 +10,20 @@ $ npm i express
 #Install nodemon em dev-mode
 $ npm i --save-dev nodemon
 
+#Set an environment variable
+#In this example, NODE_ENV in development mode and X with value 23
+$ NODE_ENV=development X=23 nodemon server.js //Linux e MAC
+$ set node_env=development && nodemon server.js //Windows
+
+#Installs eslint, prettier and some plugins, configs and airbnb styleguide to our code
+$npm i eslint prettier eslint-config-prettier eslint-plugin-prettier eslint-config-airnbnb eslint-plugin-node eslint-plugin-import eslint-plugin-jsx-ally eslint-plugin-react --save-dev
+
 ----------------------------------------------------------------------------------------------packages.json----------------------------------------------------------------------------------------------
 #Accept upgrade for all versions (major, minor and patch), including braking changes -> "slugify": "*1.0.0"'
 #Accept upgrade in minor version -> "slugify": "^1.0.0"
 #Accept upgrade just in patch verstion -> "slugify": "~1.0.0"
-nodemon -> auto-reload extension to nodejs
+nodemon -> auto-reload extension to nodejs during runtime
+dotenv -> loads environment variables from a .env file
 
 ----------------------------------------------------------------------------------------------VS CODE----------------------------------------------------------------------------------------------
 Useful extensions:
