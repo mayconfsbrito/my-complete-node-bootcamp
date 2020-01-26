@@ -15,6 +15,31 @@ db.DOCUMENT.insertMany({})
 # Exit shell
 quit()
 
+-------------------------------------------------------------------------------------------
+QUery Examples
+
+db.tours.insertMany([{ name: "The Sea Explorer", price: 497, rating: 4.8 }, { name: "The Snow Adventurer", price: 997, rating: 4.9, difficulty: "easy" }])
+db.tours.find()
+db.tours.find({ name: "The Forest Hiker" })
+
+# Find tours with the price LESS THAN OR EQUAL ($lte) 500
+db.tours.find({ price: {$lte: 500} })
+
+# Find tours with the price LESS THAN ($lt) 500 and rating GREATER THAN OR EQUAL ($gte) 4.8
+db.tours.find({ price: {$lt: 500}, rating: {$gte: 4.8 } })
+
+# Find tours that has price LESS THAN 500 OR rating GREATHER THAN OR EQUAL 4.8
+db.tours.find({ $or: [ {price: {$lt: 500} }, {rating: {$gte:4.8} } ] })
+
+# Update one tour that has this name
+db.tours.updateOne({ name: "The Snow Adventurer", { $set {price: 597}}})
+
+# Update many with these conditions and SET premium with true 
+db.tours.updateMany({ price: {$gt: 500}, rating: {$gte: 4.8} }, { $set: {premium: true}})
+
+# Delete all documents in the tours collections
+db.tours.deleteMany({})
+
 --------------------------------------------------------------------------------------------
 Installation
 # Mongo databases location (create this directory in the installation)
