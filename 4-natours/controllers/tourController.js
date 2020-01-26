@@ -1,36 +1,7 @@
-const fs = require('fs');
-const filePathTours = `${__dirname}/../dev-data/data/tours-simple.json`;
-const tours = JSON.parse(fs.readFileSync(filePathTours));
-
-/**
- * Middleware of param route to check the value of an id parameter
- */
-exports.checkID = (req, res, next, val) => {
-  if (req.params.id * 1 > tours.length)
-    return res.status(404).json({
-      status: 'fail',
-      message: 'Invalid ID'
-    });
-  next();
-};
-
-exports.checkBody = (req, res, next) => {
-  if (!req.body.name || !req.body.price)
-    return res.status(400).json({
-      status: 'fail',
-      message: 'Missing name or price'
-    });
-  next();
-};
+const Tour = require('./../models/tourModel');
 
 exports.getAllTours = (req, res) => {
-  res.status(200).json({
-    status: 'success',
-    results: tours.length,
-    data: {
-      tours
-    }
-  });
+  res.status(200).json({});
 };
 
 exports.getTour = (req, res) => {
@@ -40,29 +11,32 @@ exports.getTour = (req, res) => {
   const id = req.params.id * 1;
 
   //Search in the tours array by the element that have the same id as the id parameter
-  const tour = tours.find(el => el.id === id);
+  // const tour = tours.find(el => el.id === id);
 
-  res.status(200).json({
-    status: 'success',
-    data: {
-      tours: tour
-    }
-  });
+  // res.status(200).json({
+  //   status: 'success',
+  //   data: {
+  //     tours: tour
+  //   }
+  // });
 };
 
-exports.createTour = (req, res) => {
-  const newId = tours[tours.length - 1].id + 1;
-  const newTour = Object.assign({ id: newId }, req.body);
-  tours.push(newTour);
+exports.createTour = async (req, res) => {
+  try {
+    const newTour = await Tour.create(req.body);
 
-  fs.writeFile(filePathTours, JSON.stringify(tours), err => {
     res.status(201).json({
       status: 'success',
       data: {
         tour: newTour
       }
     });
-  });
+  } catch (err) {
+    res.status(400).json({
+      status: 'fail',
+      message: 'Invalid data sent!'
+    });
+  }
 };
 
 exports.updateTour = (req, res) => {
